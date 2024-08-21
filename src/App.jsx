@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import Auth from './pages/Auth';
+import Homepage from './pages/Homepage/Homepage';
+import Auth from './pages/Auth/Auth';
+
 
 function App() {
   return (
@@ -12,7 +13,6 @@ function App() {
       </Routes>
     </Router>
   );
-
 }
 
 export default App;

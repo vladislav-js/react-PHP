@@ -1,0 +1,16 @@
+.products-section {
+    padding: 20px;
+  }
+  
+  .products-section__title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .products-section__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  

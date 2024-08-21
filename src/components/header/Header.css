@@ -1,0 +1,256 @@
+/* Основные стили для body */
+body {
+  background-color: whitesmoke;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Основные стили для header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative; /* Для правильного позиционирования бургер-меню */
+}
+
+/* Стили для контейнера внутри header */
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Стили для логотипа */
+.logotype {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 50px; /* Отступ от левого края */
+}
+
+/* Стили для бургер-меню */
+.menu-toggle {
+  display: none; /* Скрыть бургер-меню на больших экранах */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1000; /* Поместите кнопку над другими элементами */
+  position: absolute; /* Относительно header */
+  top: 20px; /* Отступ сверху */
+  left: 20px; /* Отступ слева */
+  transition: all 0.3s ease;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: red;
+  transition: all 0.3s ease;
+}
+
+/* Анимация для бургер-меню */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Стили для навигационного меню */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.nav__btn {
+  cursor: pointer;
+}
+
+.nav__btn a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__btn:hover {
+  color: red;
+  transition: 0.3s;
+}
+
+/* Стили для кнопки "Log in" */
+.btn {
+  text-decoration: none;
+  color: white;
+  background-color: red;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin-left: 20px; /* Отступ слева */
+}
+
+/* Стили для поискового контейнера */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative; /* Для правильного позиционирования модального окна */
+}
+
+.input {
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: darkred;
+}
+
+/* Стили для модального окна */
+.modal {
+  position: absolute; /* Относительно родителя */
+  top: 100%; /* Позиция под поисковым полем */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Основное содержимое страницы */
+.content {
+  transition: margin-top 0.3s ease;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .header__container {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+      position: relative; /* Для правильного отображения бургер-меню */
+  }
+
+  .nav {
+      display: none; /* Скрыть навигацию по умолчанию на мобильных устройствах */
+      flex-direction: column;
+      width: 100%;
+      background-color: whitesmoke;
+      position: absolute; /* Фиксированное положение */
+      top: 60px; /* Отступ сверху от логотипа и бургер-меню */
+      left: 0;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+  }
+
+  .nav.active {
+      display: flex;
+      max-height: 300px; /* Установите максимальную высоту для раскрытого меню */
+  }
+
+  .menu-toggle {
+      display: flex;
+  }
+
+  .input {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  .header__container {
+      padding: 10px;
+  }
+
+  .btn {
+      margin-top: 10px;
+  }
+
+  .nav ul {
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+  }
+
+  .nav__btn a {
+      font-size: 16px;
+      padding: 10px 0; /* Отступы для элементов меню */
+      display: block;
+  }
+
+  /* Стили для смещения основного содержимого */
+  .nav.active ~ .content {
+      margin-top: 300px; /* Измените в зависимости от высоты меню */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+      padding: 15px;
+  }
+
+  .nav ul {
+      gap: 8px;
+      font-size: 12px;
+  }
+
+  .input {
+      font-size: 14px;
+  }
+
+  .search-button {
+      padding: 8px 12px;
+  }
+
+  .btn {
+      padding: 4px 15px;
+      font-size: 12px;
+  }
+}
